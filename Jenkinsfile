@@ -79,7 +79,7 @@ pipeline {
     steps {
         script {
             if (params.DESTROY_TERRAFORM) {
-               withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-rwagh']]) {
+               withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-gb']]) {
                     
                         sh 'echo "=================Terraform Destroy=================="'
                         sh 'terraform destroy -auto-approve'
