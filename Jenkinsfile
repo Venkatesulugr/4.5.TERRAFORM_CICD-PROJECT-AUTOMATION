@@ -1,4 +1,4 @@
-Final One & Verified :
+
 pipeline {
     agent any
 
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Terraform Init') {
                     steps {
-                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-rwagh']]){
+                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-gb']]){
                             
                             sh 'echo "=================Terraform Init=================="'
                             sh 'terraform init'
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Terraform Validate') {
     steps {
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-rwagh']]) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-gb']]) {
             
                 sh 'echo "=================Terraform Validate=================="'
                 sh 'terraform validate'
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 script {
                     if (params.PLAN_TERRAFORM) {
-                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-rwagh']]){
+                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-gb']]){
                             
                                 sh 'echo "=================Terraform Plan=================="'
                                 sh 'terraform plan'
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script {
                     if (params.APPLY_TERRAFORM) {
-                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-rwagh']]){
+                       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-gb']]){
                             
                                 sh 'echo "=================Terraform Apply=================="'
                                 sh 'terraform apply -auto-approve'
