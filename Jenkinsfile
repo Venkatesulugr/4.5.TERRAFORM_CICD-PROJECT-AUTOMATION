@@ -17,7 +17,7 @@ pipeline {
 
                 // Clone the Git repository
                 git branch: 'master',
-                    url: 'https://github.com/gbgowtham/4.5.TERRAFORM_PROJECT-AUTOMATE.git'
+                    url: 'https://github.com/Venkatesulugr/4.5.TERRAFORM_PROJECT-AUTOMATE.git'
 
                 sh "ls -lart"
             }
